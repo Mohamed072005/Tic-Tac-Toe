@@ -1,0 +1,39 @@
+#grid-table {
+    gap: 1px; /* Gap between rectangles */
+    width: 100%;
+    height: auto;
+}
+
+.rect {
+    /* background-color: #3498db; */
+    width: 30px;
+    height: 30px;
+    border: 1 solid black;
+    display: flex;
+    align-items: center;
+}
+
+.rect span {
+    width: 100%;
+    text-align: center;
+}
+
+.pageForBigSize {
+    height: 100%;
+}
+
+.pageForNormalSize {
+    height: 100vh;
+}
+
+.x-player-result-board {
+    border-right: 1px solid black;
+    width: 50%;
+    text-align: center;
+}
+
+.o-player-result-board {
+    border-left: 1px solid black;
+    width: 50%;
+    text-align: center;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="game.css">
+    <title>Tic Tac Toe</title>
+</head>
+
+<body>
+    <header class="flex justify-center w-fully">
+        <nav class="w-[100%] py-5 px-8 flex justify-between bg-red-700">
+            <div>
+                <h1 class="text-2xl font-bold">XO.io</h1>
+            </div>
+        </nav>
+    </header>
+    <main class="flex" id="main">
+        <aside class="w-[40%] bg-blue-500 flex justify-center py-16">
+            <div class="w-[60%] h-[30%] bg-white flex justify-between rounded p-4">
+                <div class="x-player-result-board">
+                    <h3 class="text-2xl font-semibold text-red-500">X player</h3>
+                    <p class="mt-5 text-3xl game-result">0</p>
+                </div>
+                <div class="o-player-result-board">
+                    <h3 class="text-2xl font-semibold text-blue-500">O player</h3>
+                    <p class="mt-5 text-3xl game-result">3</p>
+                </div>
+            </div>
+        </aside>
+        <div class="bg-green-200 h-[100%] w-[60%] flex flex-col items-center">
+            <h2 class="text-2xl font-semibold m-5">
+                Welcome to <span class="text-red-700">Tic</span> <span class="text-green-700">Tac</span> <span
+                    class="text-yellow-500">Toe</span>
+            </h2>
+            <div class="flex justify-center">
+                <div class="">
+                    <div class="bg-white" id="grid-table"></div>
+                </div>
+            </div>
+            <div class="p-3">
+                <a href="#">Play again?</span>
+            </div>
+        </div>
+    </main>
+    <script src="game.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+
+</html>
