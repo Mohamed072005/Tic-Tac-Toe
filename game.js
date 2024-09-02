@@ -1,13 +1,11 @@
-const rectNumber = 3;
-const winCondition = 3;
+localStorage.setItem('playerXScore', 0);
+localStorage.setItem('playerOScore', 0);
+let rectNumber;
+let winCondition;
 const gridContainer = document.getElementById('grid-table');
 const pageSize = document.getElementById('main');
-if(rectNumber >= 15){
-    pageSize.classList.add('pageForBigSize');
-}else{
-    pageSize.classList.add('pageForNormalSize');
-}
-gridContainer.classList.add('grid', `grid-cols-[repeat(${rectNumber},_0fr)]`, `grid-rows-[repeat(${rectNumber},_0fr)]`);
+let whichPlayer = 1;
+let board; // Track board state
 const player1 = {
     icon: 'X',
     iconColor: 'text-red-500',
@@ -16,10 +14,24 @@ const player2 = {
     icon: 'O',
     iconColor: 'text-blue-500',
 };
-let whichPlayer = 1;
-let board = Array(rectNumber * rectNumber).fill(null); // Track board state
+let xScoreField = document.getElementById('game-result-x');
+let oScoreField = document.getElementById('game-result-o');
+xScoreField.innerText = localStorage.getItem('playerXScore');
+oScoreField.innerText = localStorage.getItem('playerOScore');
 
-playBoard(rectNumber);
+function startGame(event){
+    event.preventDefault();
+    let rect_Number = document.forms['game-config-form']['rect-number'].value;
+    let win_Condition = document.forms['game-config-form']['win-condition'].value;
+    rectNumber = rect_Number;
+    winCondition = win_Condition;
+    gridContainer.classList.add('grid', `grid-cols-[repeat(${rect_Number},_0fr)]`, `grid-rows-[repeat(${rect_Number},_0fr)]`);
+    if(rectNumber >= 15){
+        pageSize.classList.add('pageForBigSize');
+    }
+    board = Array(rectNumber * rectNumber).fill(null);
+    playBoard(rect_Number);
+}
 
 function playBoard(rectNumber) {
     for (let i = 0; i < rectNumber * rectNumber; i++) {
@@ -35,6 +47,15 @@ function playBoard(rectNumber) {
                 makeXorY(currentPlayer, rect);
                 board[i] = currentPlayer.icon; // Track the player's move
                 if (checkWin(i)) {
+                    if(whichPlayer){
+                        localStorage.setItem('playerXScore', Number(localStorage.getItem('playerXScore')) + 1);
+                        xScoreField.innerText = '';
+                        xScoreField.innerText = localStorage.getItem('playerXScore');
+                    }else{
+                        localStorage.setItem('playerOScore', Number(localStorage.getItem('playerOScore')) + 1);
+                        oScoreField.innerText = '';
+                        oScoreField.innerText = localStorage.getItem('playerOScore');
+                    }
                     Swal.fire(`Player ${whichPlayer ? '1 (X)' : '2 (O)'} wins!`);
                     resetGame();
                 } else {

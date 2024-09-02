@@ -17,31 +17,57 @@
             </div>
         </nav>
     </header>
-    <main class="flex" id="main">
-        <aside class="w-[40%] bg-blue-500 flex justify-center py-16">
-            <div class="w-[60%] h-[30%] bg-white flex justify-between rounded p-4">
+    <main class="flex pageForNormalSize" id="main">
+        <aside class="w-[40%] bg-blue-500 flex flex-col items-center py-5">
+            <div class="w-[60%] bg-white mt-8 rounded p-4 mb-4">
+                <form onsubmit="startGame(event)" name="game-config-form">
+                    <div class="flex flex-col mb-4">
+                        <label for="rect-number" class="text-lg font-semibold text-gray-700">Number of
+                            Rectangles:</label>
+                        <input id="rect-number" name="rect-number" type="number"
+                            class="mt-2 px-4 py-2 border border-gray-300 rounded"
+                            placeholder="Enter grid size (e.g., 20)" min="3" max="50">
+                    </div>
+
+                    <div class="flex flex-col mb-2">
+                        <label for="win-condition" class="text-lg font-semibold text-gray-700">Win Condition:</label>
+                        <input id="win-condition" name="win-condition" type="number"
+                            class="mt-2 px-4 py-2 border border-gray-300 rounded"
+                            placeholder="Enter win condition (e.g., 5)" min="3" max="10">
+                    </div>
+                    <div class="flex justify-center ">
+                        <button type=""
+                            class="py-1 px-4 rounded text-xl font-semibold bg-green-200 hover:bg-green-400">play!</button>
+                    </div>
+                </form>
+            </div>
+            <div class="w-[60%] h-[150px] bg-white flex justify-between rounded p-4">
                 <div class="x-player-result-board">
                     <h3 class="text-2xl font-semibold text-red-500">X player</h3>
-                    <p class="mt-5 text-3xl game-result">0</p>
+                    <p id="game-result-x" class="mt-5 text-3xl game-result-x"></p>
                 </div>
                 <div class="o-player-result-board">
                     <h3 class="text-2xl font-semibold text-blue-500">O player</h3>
-                    <p class="mt-5 text-3xl game-result">3</p>
+                    <p id="game-result-o" class="mt-5 text-3xl game-result-o"></p>
                 </div>
             </div>
         </aside>
-        <div class="bg-green-200 h-[100%] w-[60%] flex flex-col items-center">
-            <h2 class="text-2xl font-semibold m-5">
-                Welcome to <span class="text-red-700">Tic</span> <span class="text-green-700">Tac</span> <span
-                    class="text-yellow-500">Toe</span>
+        <div class="bg-green-200 h-full w-[60%] flex flex-col items-center">
+            <h2 class="text-3xl font-bold mt-8 mb-6">
+                Welcome to <span class="text-red-600">Tic</span> <span class="text-green-600">Tac</span>
+                <span class="text-yellow-500">Toe</span>
             </h2>
+
             <div class="flex justify-center">
-                <div class="">
-                    <div class="bg-white" id="grid-table"></div>
+                <div class="bg-white shadow-lg rounded-lg p-4" id="grid-table">
+                    <!-- Grid will be dynamically injected here -->
                 </div>
             </div>
-            <div class="p-3">
-                <a href="#">Play again?</span>
+
+            <div class="mt-8">
+                <button onclick="resetGame()" class="text-lg font-semibold text-blue-700 hover:text-blue-900 underline">
+                    Play again?
+                </button>
             </div>
         </div>
     </main>
