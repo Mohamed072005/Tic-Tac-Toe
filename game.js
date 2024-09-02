@@ -25,9 +25,16 @@ function startGame(event){
     let win_Condition = document.forms['game-config-form']['win-condition'].value;
     rectNumber = rect_Number;
     winCondition = win_Condition;
-    gridContainer.classList.add('grid', `grid-cols-[repeat(${rect_Number},_0fr)]`, `grid-rows-[repeat(${rect_Number},_0fr)]`);
+    gridContainer.innerHTML = '';
+    gridContainer.classList.remove(...Array.from(gridContainer.classList).filter(cls => cls.startsWith('grid-cols-') || cls.startsWith('grid-rows-')));
+
+    // Add the new grid configuration classes
+    gridContainer.classList.add('grid', `grid-cols-[repeat(${rectNumber},_0fr)]`, `grid-rows-[repeat(${rectNumber},_0fr)]`);
+    // gridContainer.classList.add('grid', `grid-cols-[repeat(${rectNumber},_0fr)]`, `grid-rows-[repeat(${rectNumber},_0fr)]`);
     if(rectNumber >= 15){
         pageSize.classList.add('pageForBigSize');
+    }else{
+        pageSize.classList.remove('pageForBigSize');
     }
     board = Array(rectNumber * rectNumber).fill(null);
     playBoard(rect_Number);

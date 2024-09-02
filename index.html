@@ -17,8 +17,8 @@
             </div>
         </nav>
     </header>
-    <main class="flex pageForNormalSize" id="main">
-        <aside class="w-[40%] bg-blue-500 flex flex-col items-center py-5">
+    <main class="flex pageForNormalSize bg-blue-500" id="main">
+        <aside class="w-[40%] bg-blue-500 pageForBigSize flex flex-col items-center py-5">
             <div class="w-[60%] bg-white mt-8 rounded p-4 mb-4">
                 <form onsubmit="startGame(event)" name="game-config-form">
                     <div class="flex flex-col mb-4">
@@ -52,7 +52,7 @@
                 </div>
             </div>
         </aside>
-        <div class="bg-green-200 h-full w-[60%] flex flex-col items-center">
+        <div class="bg-green-200 h-full w-[60%] flex flex-col py-4 items-center">
             <h2 class="text-3xl font-bold mt-8 mb-6">
                 Welcome to <span class="text-red-600">Tic</span> <span class="text-green-600">Tac</span>
                 <span class="text-yellow-500">Toe</span>
@@ -64,7 +64,7 @@
                 </div>
             </div>
 
-            <div class="mt-8">
+            <div class="mt-5">
                 <button onclick="resetGame()" class="text-lg font-semibold text-blue-700 hover:text-blue-900 underline">
                     Play again?
                 </button>
